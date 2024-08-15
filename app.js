@@ -40,6 +40,7 @@ check2.addEventListener('change', () => {
 });
 
 play.addEventListener("click", () => {
+    defaultTurn();
     if (check1.checked || check2.checked) {
         pageThree();
     } else {
@@ -65,7 +66,7 @@ boxes.forEach(button => {
             }
         } else if (check1.checked) {
             if (turnX) {
-                move(button, "circle");
+                move(button, "cross");
                 pick.play();
                 button.disabled = true;
                 if (!checkWinner() && !checkDraw()) {
@@ -165,16 +166,16 @@ function pageOne() {
 
 function defaultTurn() {
     turnX = true;
-    turn.innerHTML = `<h1>Turn : </h1><img src="circle.png" width="30px" alt="">`;
+    turn.innerHTML = `<h1>Turn : </h1><img src="cross.png" width="30px" alt="">`;
     cross = [];
     circle = [];
 }
 
 function turnChange() {
     if (turnX) {
-        turn.innerHTML = `<h1>Turn : </h1><img src="cross.png" width="30px" alt="">`;
-    } else {
         turn.innerHTML = `<h1>Turn : </h1><img src="circle.png" width="30px" alt="">`;
+    } else {
+        turn.innerHTML = `<h1>Turn : </h1><img src="cross.png" width="30px" alt="">`;
     }
     turnX = !turnX;
 }
@@ -196,7 +197,7 @@ function computerPlay() {
     if (availableBoxes.length > 0) {
         let randIdx = Math.floor(Math.random() * availableBoxes.length);
         let box = availableBoxes[randIdx];
-        move(box, "cross");
+        move(box, "circle");
         box.disabled = true;
         checkWinner();
         checkDraw();
