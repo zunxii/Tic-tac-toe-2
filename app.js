@@ -165,7 +165,7 @@ function pageOne() {
 
 function defaultTurn() {
     turnX = true;
-    turn.innerHTML = `<h1>Turn : </h1><img src="circle.png" width="30px" alt="">`;
+    turn.innerHTML = `<h1>Turn : </h1><img src="cross.png" width="30px" alt="">`;
     cross = [];
     circle = [];
 }
